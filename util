@@ -1,0 +1,18 @@
+const uuidv4=require('uuid').v4;
+
+function createCookieSession(email,sessions){
+    const sessionId=uuidv4();
+    sessions[sessionId]={'email':email};
+    const expiresIn = 30 * 60 * 1000;
+    setTimeout(() => {
+        delete sessions[sessionId];
+    }, expiresIn);
+    console.log(sessionId);
+    return sessionId;
+}
+function errorLog(err){
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp} - ERROR: ${err.message}\n\nStack Trace:\n${err.stack}\n\n\n`)//log error + timestamp;
+}
+
+module.exports = {uuidv4, createCookieSession, errorLog};
