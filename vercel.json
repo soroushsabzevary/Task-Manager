@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "./restAPI.js", "use": "@vercel/node" },
+    { "src": "./react-app/build/**/*", "use": "@vercel/static" } 
+  ],
+  "rewrites": [
+    { "source": "/signin", "destination": "/signin" },
+    { "source": "/dashboard", "destination": "/dashboard" },
+    { "source": "/(.*)", "destination": "/signin" }
+  ]
+}
